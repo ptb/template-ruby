@@ -1,0 +1,21 @@
+doctype 5
+html.no-js[lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml']
+  head
+    meta[charset='UTF-8']/
+
+    - if content_for? :title
+      title #{yield_content :title}
+
+    / meta[content='yes' name='apple-mobile-web-app-capable']/
+    meta[content='initial-scale=1, width=device-width' name='viewport']/
+
+    link[href="#{url_for '/css/style.css'}" rel='stylesheet']/
+
+    link[href="#{url_for '/subscribe/index.atom'}" rel='alternate' type='application/atom+xml']/
+    link[href="#{url_for '/subscribe/index.rss'}" rel='alternate' type='application/rss+xml']/
+
+    - if content_for? :head
+      == yield_content :head
+
+  body
+    == yield
